@@ -42,3 +42,18 @@ def store_user_answers_to_csv(responses):
     response_df.reset_index(inplace=True)
     response_df.to_csv("user_responses.csv", index=False)
     print(f"✅ Saved user responses to user_responses.csv")
+
+def handle_existing_answers(filepath="user_responses.csv") -> bool:
+    if os.path.exists(filepath):
+        print(f"⚠️ A saved responses file ({filepath}) already exists.")
+        while True:
+            user_input = input("Do you want to retake the quiz and overwrite your previous responses? (y/n): ").strip().lower()
+            if user_input in ["y", "yes"]:
+                return True  # Proceed with quiz
+            elif user_input in ["n", "no"]:
+                print("✅ Keeping existing responses. Exiting quiz.")
+                return False  # Skip quiz
+            else:
+                print("Please enter 'y' or 'n'.")
+    else:
+        return True
