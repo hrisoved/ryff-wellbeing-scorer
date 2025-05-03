@@ -1,6 +1,9 @@
 import pandas as pd
 import os
 
+
+SCALE_POINTS = 7
+
 data_file = pd.read_csv("questions.csv")
 
 scale_explanation = """
@@ -73,7 +76,7 @@ def reverse_score(user_csv="user_responses.csv", questions_csv="questions.csv") 
    # Apply reverse scoring
     def score(row):
         if row["ReverseScored"] == "Yes":
-            return 8 - row["UserResponse"]
+            return (SCALE_POINTS + 1) - row["UserResponse"]
         else:
             return row["UserResponse"]
 
