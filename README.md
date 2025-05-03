@@ -64,6 +64,18 @@ Make sure you have Python and `pandas` installed.
 pip install pandas
 ```
 
+🧩 Version Flexibility
+
+This tool now supports:
+
+- **42-item Ryff Scale** (default)
+- **18-item Ryff Scale** – a shorter version based on the official [SPARQ Tools source](https://sparqtools.org/mobility-measure/psychological-wellbeing-scale/)
+
+To use the 18-item version, replace `questions.csv` with `questions_18.csv` or modify the script to accept a `--version` flag (e.g., via argparse).
+
+🔄 **Reverse Scoring Note**:
+The reverse scoring logic uses a SCALE_POINTS constant set to the default `7` as per method described in the source documentation. This can be changed if needed.
+
 ## 📚 Source
 
 This project uses the 42-item version of the **Ryff Psychological Wellbeing Scale**, as published by Stanford SPARQ:  
