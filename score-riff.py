@@ -57,6 +57,27 @@ def handle_existing_answers(filepath="user_responses.csv") -> bool:
                 print("Please enter 'y' or 'n'.")
     else:
         return True
+
+def reverse_score(user_csv="user_responses.csv", questions_csv="questions.csv") -> pd.DataFrame:
+    scored_responses = {}
+    user_df = pd.read_csv(user_csv)
+    metadata_df = pd.read_csv(questions_csv)
+
+    # Merge on QuestionNumber
+    merged_df = pd.merge(metadata_df, user_df, on="QuestionNumber", how="left")
+    
+   # Apply reverse scoring
+    def score(row):
+        if row["ReverseScored"] == "Yes":
+            return 8 - row["UserResponse"]
+        else:
+            return row["UserResponse"]
+
+    merged_df["ScoredResponse"] = merged_df.apply(score, axis=1)
+
+    print("✅ Reverse scoring complete.")
+    return merged_df
+     
     
 def main():
     if handle_existing_answers():
