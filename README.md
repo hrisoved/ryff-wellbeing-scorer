@@ -34,16 +34,16 @@ The tool allows users to answer all 42 questions interactively, handles reverse 
 
 ## 📃 Logic Overview
 
-- The program reads `questions.csv`, which defines:
-  - The question text
-  - Associated subscale
-  - Whether the item is reverse-scored  
+- Loads metadata from a `.csv` file containing:
+  - Question text
+  - Subscale category
+  - Reverse-scored flag
 - The user responds to each item using a **1–7 Likert scale**
-- After all responses:
-  - Reverse scoring is applied where appropriate
-  - A merged DataFrame is created with `ScoredResponse`
-  - Subscale scores are calculated by grouping and summing
-- All outputs are saved as `.csv` files for easy reuse
+- After responses are collected:
+  - Applies reverse scoring to items marked as reverse-scored
+  - Merges metadata with user responses into a single `ScoredResponse`DataFrame
+  - Computes subscale scores by grouping responses and summing them
+- All outputs are saved as `.csv` files for easy review or further analysis
 
 ---
 
