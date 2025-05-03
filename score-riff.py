@@ -1,5 +1,5 @@
 import pandas as pd
-
+import os
 
 data_file = pd.read_csv("questions.csv")
 
@@ -16,6 +16,7 @@ Please use the following scale to answer:
 
 print(scale_explanation)
 
+
 def get_user_answers():
     responses_from_user = {}
     for _, row in data_file.iterrows():
@@ -24,7 +25,8 @@ def get_user_answers():
 
         while True:
             try:
-                input_response = int(input(f"{question_id}.{question_text} \nYour answer (1-7): "))
+                input_response = int(
+                    input(f"{question_id}.{question_text} \nYour answer (1-7): "))
                 if 1 <= input_response <= 7:
                     responses_from_user[question_id] = input_response
                     break
@@ -34,4 +36,9 @@ def get_user_answers():
                 print("That wasn't a valid number.")
     return responses_from_user
 
-print(get_user_answers())
+def store_user_answers_to_csv(responses):
+    response_df = pd.DataFrame.from_dict(responses, orient="index", columns=["UserResponse"])
+    response_df.index.name = "QuestionNumber"
+    response_df.reset_index(inplace=True)
+    response_df.to_csv("user_responses.csv", index=False)
+    print(f"✅ Saved user responses to user_responses.csv")
