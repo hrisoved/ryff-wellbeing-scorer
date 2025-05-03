@@ -1,0 +1,43 @@
+QuestionNumber,Text,Subscale,ReverseScored,UserResponse,ScoredResponse
+Q1,"I am not afraid to voice my opinions, even when they are in opposition to the opinions of most people.",Autonomy,Yes,3,5
+Q2,"For me, life has been a continuous process of learning, changing, and growth.",Personal Growth,Yes,1,7
+Q3,"In general, I feel I am in charge of the situation in which I live.",Environmental Mastery,Yes,2,6
+Q4,"People would describe me as a giving person, willing to share my time with others.",Positive Relations,Yes,2,6
+Q5,I am not interested in activities that will expand my horizons.,Personal Growth,No,7,7
+Q6,I enjoy making plans for the future and working to make them a reality.,Purpose in Life,Yes,1,7
+Q7,Most people see me as loving and affectionate.,Positive Relations,Yes,1,7
+Q8,In many ways I feel disappointed about my achievements in life.,Self-Acceptance,No,2,2
+Q9,I live life one day at a time and don't really think about the future.,Purpose in Life,No,3,3
+Q10,I tend to worry about what other people think of me.,Autonomy,No,1,1
+Q11,"When I look at the story of my life, I am pleased with how things have turned out.",Self-Acceptance,Yes,2,6
+Q12,I have difficulty arranging my life in a way that is satisfying to me.,Environmental Mastery,No,3,3
+Q13,My decisions are not usually influenced by what everyone else is doing.,Autonomy,Yes,5,3
+Q14,I gave up trying to make big improvements or changes in my life a long time ago.,Personal Growth,No,7,7
+Q15,The demands of everyday life often get me down.,Environmental Mastery,No,3,3
+Q16,I have not experienced many warm and trusting relationships with others.,Positive Relations,No,3,3
+Q17,I think it is important to have new experiences that challenge how you think about yourself and the world.,Personal Growth,Yes,1,7
+Q18,Maintaining close relationships has been difficult and frustrating for me.,Positive Relations,No,3,3
+Q19,My attitude about myself is probably not as positive as most people feel about themselves.,Self-Acceptance,No,1,1
+Q20,I have a sense of direction and purpose in life.,Purpose in Life,Yes,3,5
+Q21,"I judge myself by what I think is important, not by the values of what others think is important.",Autonomy,Yes,1,7
+Q22,"In general, I feel confident and positive about myself.",Self-Acceptance,Yes,3,5
+Q23,I have been able to build a living environment and a lifestyle for myself that is much to my liking.,Environmental Mastery,Yes,3,5
+Q24,I tend to be influenced by people with strong opinions.,Autonomy,No,2,2
+Q25,I do not enjoy being in new situations that require me to change my old familiar ways of doing things.,Personal Growth,No,5,5
+Q26,I do not fit very well with the people and the community around me.,Environmental Mastery,No,6,6
+Q27,"I know that I can trust my friends, and they know they can trust me.",Positive Relations,Yes,2,6
+Q28,"When I think about it, I haven’t really improved much as a person over the years.",Personal Growth,No,7,7
+Q29,"Some people wander aimlessly through life, but I am not one of them.",Purpose in Life,Yes,3,5
+Q30,I often feel lonely because I have few close friends with whom to share my concerns.,Positive Relations,No,1,1
+Q31,"When I compare myself to friends and acquaintances, it makes me feel good about who I am.",Self-Acceptance,Yes,2,6
+Q32,I don’t have a good sense of what it is I’m trying to accomplish in life.,Purpose in Life,No,2,2
+Q33,I sometimes feel as if I've done all there is to do in life.,Purpose in Life,No,4,4
+Q34,I feel like many of the people I know have gotten more out of life than I have.,Self-Acceptance,No,4,4
+Q35,"I have confidence in my opinions, even if they are contrary to the general consensus.",Autonomy,Yes,3,5
+Q36,I am quite good at managing the many responsibilities of my daily life.,Environmental Mastery,Yes,2,6
+Q37,I have the sense that I have developed a lot as a person over time.,Personal Growth,Yes,1,7
+Q38,I enjoy personal and mutual conversations with family members and friends.,Positive Relations,Yes,1,7
+Q39,My daily activities often seem trivial and unimportant to me.,Purpose in Life,No,6,6
+Q40,I like most parts of my personality.,Self-Acceptance,Yes,3,5
+Q41,It’s difficult for me to voice my own opinions on controversial matters.,Autonomy,No,4,4
+Q42,I often feel overwhelmed by my responsibilities.,Environmental Mastery,No,3,3

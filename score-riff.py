@@ -87,7 +87,8 @@ def main():
         responses = dict(zip(stored_responses["QuestionNumber"], stored_responses["UserResponse"]))
         print("✅ Responses loaded. Ready to score.")
     
-    print(scored_df = reverse_score())
+    reversed_scores = reverse_score()
+    reversed_scores.to_csv("scored_responses.csv", index=False)
 
 
 if __name__ == "__main__":
