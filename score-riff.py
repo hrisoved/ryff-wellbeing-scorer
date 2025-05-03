@@ -1,10 +1,18 @@
+import argparse
 import pandas as pd
 import os
 
 
 SCALE_POINTS = 7
 
-data_file = pd.read_csv("questions.csv")
+parser = argparse.ArgumentParser(description="Ryff Psychological Wellbeing Scorer")
+parser.add_argument('--version', choices=['42', '18'], default='42', help='Choose questionnaire version')
+args = parser.parse_args()
+
+if args.version == "18":
+    data_file = pd.read_csv("questions_18.csv")
+else:
+    data_file = pd.read_csv("questions_42.csv")
 
 scale_explanation = """
 Please use the following scale to answer:
