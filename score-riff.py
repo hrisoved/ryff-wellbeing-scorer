@@ -36,27 +36,32 @@ def get_user_answers():
                 print("That wasn't a valid number.")
     return responses_from_user
 
+
 def store_user_answers_to_csv(responses):
-    response_df = pd.DataFrame.from_dict(responses, orient="index", columns=["UserResponse"])
+    response_df = pd.DataFrame.from_dict(
+        responses, orient="index", columns=["UserResponse"])
     response_df.index.name = "QuestionNumber"
     response_df.reset_index(inplace=True)
     response_df.to_csv("user_responses.csv", index=False)
     print(f"✅ Saved user responses to user_responses.csv")
 
+
 def handle_existing_answers(filepath="user_responses.csv") -> bool:
     if os.path.exists(filepath):
         print(f"⚠️ A saved responses file ({filepath}) already exists.")
         while True:
-            user_input = input("Do you want to retake the quiz and overwrite your previous responses? (y/n): ").strip().lower()
+            user_input = input(
+                "Do you want to retake the quiz and overwrite your previous responses? (y/n): ").strip().lower()
             if user_input in ["y", "yes"]:
                 return True  # Proceed with quiz
             elif user_input in ["n", "no"]:
-                print("✅ Keeping existing responses. Exiting quiz.")
+                print("✅ Keeping existing responses.")
                 return False  # Skip quiz
             else:
                 print("Please enter 'y' or 'n'.")
     else:
         return True
+
 
 def reverse_score(user_csv="user_responses.csv", questions_csv="questions.csv") -> pd.DataFrame:
     user_df = pd.read_csv(user_csv)
@@ -64,7 +69,7 @@ def reverse_score(user_csv="user_responses.csv", questions_csv="questions.csv") 
 
     # Merge on QuestionNumber
     merged_df = pd.merge(metadata_df, user_df, on="QuestionNumber", how="left")
-    
+
    # Apply reverse scoring
     def score(row):
         if row["ReverseScored"] == "Yes":
@@ -76,21 +81,34 @@ def reverse_score(user_csv="user_responses.csv", questions_csv="questions.csv") 
 
     print("✅ Reverse scoring complete.")
     return merged_df
-     
-    
+
+
+def calculate_subscale_scores(reversed_scores: pd.DataFrame) -> dict:
+    subscale_sum = reversed_scores.groupby(
+        "Subscale")["ScoredResponses"].sum().to_dict()
+    return subscale_sum
+
+
 def main():
     if handle_existing_answers():
         responses = get_user_answers()
         store_user_answers_to_csv(responses)
     else:
         stored_responses = pd.read_csv("user_responses.csv")
-        responses = dict(zip(stored_responses["QuestionNumber"], stored_responses["UserResponse"]))
+        responses = dict(
+            zip(stored_responses["QuestionNumber"], stored_responses["UserResponse"]))
         print("✅ Responses loaded. Ready to score.")
-    
+
     reversed_scores = reverse_score()
     reversed_scores.to_csv("scored_responses.csv", index=False)
+
+    subscale_scores = calculate_subscale_scores(reversed_scores)
+    print("\n🎯 Final Subscale Scores:")
+    for subscale, score in subscale_scores.items():
+        print(f"{subscale}: {score}")
+        
+    pd.DataFrame(list(subscale_scores.items()), columns=["Subscale", "Score"]).to_csv("subscale_summary.csv", index=False)
 
 
 if __name__ == "__main__":
     main()
-
