@@ -65,7 +65,7 @@ Make sure you have Python and `pandas` installed.
 pip install pandas
 ```
 
-## 🧩 Version Flexibility
+### 🧩 Version Flexibility
 
 This tool now supports:
 
