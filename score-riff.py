@@ -85,7 +85,7 @@ def reverse_score(user_csv="user_responses.csv", questions_csv="questions.csv") 
 
 def calculate_subscale_scores(reversed_scores: pd.DataFrame) -> dict:
     subscale_sum = reversed_scores.groupby(
-        "Subscale")["ScoredResponses"].sum().to_dict()
+        "Subscale")["ScoredResponse"].sum().to_dict()
     return subscale_sum
 
 
@@ -106,7 +106,7 @@ def main():
     print("\n🎯 Final Subscale Scores:")
     for subscale, score in subscale_scores.items():
         print(f"{subscale}: {score}")
-        
+
     pd.DataFrame(list(subscale_scores.items()), columns=["Subscale", "Score"]).to_csv("subscale_summary.csv", index=False)
 
 
