@@ -59,7 +59,6 @@ def handle_existing_answers(filepath="user_responses.csv") -> bool:
         return True
 
 def reverse_score(user_csv="user_responses.csv", questions_csv="questions.csv") -> pd.DataFrame:
-    scored_responses = {}
     user_df = pd.read_csv(user_csv)
     metadata_df = pd.read_csv(questions_csv)
 
@@ -87,6 +86,8 @@ def main():
         stored_responses = pd.read_csv("user_responses.csv")
         responses = dict(zip(stored_responses["QuestionNumber"], stored_responses["UserResponse"]))
         print("✅ Responses loaded. Ready to score.")
+    
+    print(scored_df = reverse_score())
 
 
 if __name__ == "__main__":
