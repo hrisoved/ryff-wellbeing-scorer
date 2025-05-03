@@ -57,3 +57,17 @@ def handle_existing_answers(filepath="user_responses.csv") -> bool:
                 print("Please enter 'y' or 'n'.")
     else:
         return True
+    
+def main():
+    if handle_existing_answers():
+        responses = get_user_answers()
+        store_user_answers_to_csv(responses)
+    else:
+        stored_responses = pd.read_csv("user_responses.csv")
+        responses = dict(zip(stored_responses["QuestionNumber"], stored_responses["UserResponse"]))
+        print("✅ Responses loaded. Ready to score.")
+
+
+if __name__ == "__main__":
+    main()
+
