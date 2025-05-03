@@ -7,7 +7,7 @@
 # 🎯 Ryff Psychological Wellbeing Scorer
 
 This project implements a command-line Python tool for administering and scoring **Carol Ryff’s Psychological Wellbeing Scale**.  
-The tool allows users to answer all 42 questions interactively, handles reverse scoring, and computes final scores across six psychological wellbeing subscales.
+The tool allows users to answer all 42 and or 18 questions, handles reverse scoring, and computes final scores across six psychological wellbeing subscales.
 
 ---
 
