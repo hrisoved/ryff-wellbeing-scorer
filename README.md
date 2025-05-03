@@ -15,7 +15,8 @@ The tool allows users to answer all 42 questions interactively, handles reverse 
 
 - 📋 **Questionnaire Prompt**: Presents all 42 Ryff items using a 1–7 Likert scale  
 - ✅ **Input Validation**: Ensures only valid numeric responses are accepted  
-- 🔄 **Reverse Scoring**: Applies scoring logic for negatively worded items using `8 - response`  
+- 🔄 **Reverse Scoring**: Applies scoring logic for negatively worded items using a configurable formula:  
+  `(SCALE_POINTS + 1) - response`   
 - 📊 **Subscale Scoring**: Calculates total scores for each of the following:
   - Autonomy  
   - Environmental Mastery  
@@ -64,20 +65,23 @@ Make sure you have Python and `pandas` installed.
 pip install pandas
 ```
 
-🧩 Version Flexibility
+## 🧩 Version Flexibility
 
 This tool now supports:
 
 - **42-item Ryff Scale** (default)
-- **18-item Ryff Scale** – a shorter version based on the official [SPARQ Tools source](https://sparqtools.org/mobility-measure/psychological-wellbeing-scale/)
+- **18-item Ryff Scale** (a shorter version)
 
-To use the 18-item version, replace `questions.csv` with `questions_18.csv` or modify the script to accept a `--version` flag (e.g., via argparse).
+To select the version, use the `--version` flag when running the script:
 
-🔄 **Reverse Scoring Note**:
-The reverse scoring logic uses a SCALE_POINTS constant set to the default `7` as per method described in the source documentation. This can be changed if needed.
+```bash
+python score-riff.py --version 42   # for the full version  
+python score-riff.py --version 18   # for the short version
+```
+
 
 ## 📚 Source
 
-This project uses the 42-item version of the **Ryff Psychological Wellbeing Scale**, as published by Stanford SPARQ:  
+This project offers both the 42-item and 18-item version of the **Ryff Psychological Wellbeing Scale**, as published by Stanford SPARQ:  
 🔗 [Psychological Wellbeing Scale – SPARQTools.org](https://sparqtools.org/mobility-measure/psychological-wellbeing-scale/)
 
