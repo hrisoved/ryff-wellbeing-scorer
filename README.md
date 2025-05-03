@@ -76,6 +76,9 @@ To select the version, use the `--version` flag when running the script:
 
 ```bash
 python score-riff.py --version 42   # for the full version  
+```
+```bash
+
 python score-riff.py --version 18   # for the short version
 ```
 
