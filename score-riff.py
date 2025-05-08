@@ -6,7 +6,7 @@ import os
 SCALE_POINTS = 7
 
 parser = argparse.ArgumentParser(description="Ryff Psychological Wellbeing Scorer")
-parser.add_argument('--version', choices=['42', '18'], default='42', help='Choose questionnaire version')
+parser.add_argument('--version', choices=['42', '18'], help='Choose questionnaire version')
 args = parser.parse_args()
 
 if args.version == "18":
@@ -101,6 +101,25 @@ def calculate_subscale_scores(reversed_scores: pd.DataFrame) -> dict:
 
 
 def main():
+
+    if not args.version:
+        while True:
+            version_input = input("Which version would you like to take? (42 or 18): ").strip()
+            if version_input in ["42", "18"]:
+                args.version = version_input
+                break
+            else:
+                print("Please enter '42' or '18'.")
+
+
+    if args.version == "18":
+        question_file = "questions_18.csv"
+    else:
+        question_file = "questions_42.csv"
+    
+    print(f"📝 Using the {args.version}-item version of the Ryff Scale.")
+    data_file = pd.read_csv(question_file)
+    
     if handle_existing_answers():
         responses = get_user_answers()
         store_user_answers_to_csv(responses)
@@ -110,10 +129,6 @@ def main():
             zip(stored_responses["QuestionNumber"], stored_responses["UserResponse"]))
         print("✅ Responses loaded. Ready to score.")
 
-    if args.version == "18":
-        question_file = "questions_18.csv"
-    else:
-        question_file = "questions_42.csv"
 
     reversed_scores = reverse_score(questions_csv=question_file)    
     reversed_scores.to_csv("scored_responses.csv", index=False)
