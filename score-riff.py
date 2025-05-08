@@ -110,7 +110,12 @@ def main():
             zip(stored_responses["QuestionNumber"], stored_responses["UserResponse"]))
         print("✅ Responses loaded. Ready to score.")
 
-    reversed_scores = reverse_score()
+    if args.version == "18":
+        question_file = "questions_18.csv"
+    else:
+        question_file = "questions_42.csv"
+
+    reversed_scores = reverse_score(questions_csv=question_file)    
     reversed_scores.to_csv("scored_responses.csv", index=False)
 
     subscale_scores = calculate_subscale_scores(reversed_scores)
